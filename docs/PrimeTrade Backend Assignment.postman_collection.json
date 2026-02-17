@@ -1,0 +1,1558 @@
+{
+  "info": {
+    "_postman_id": "017f0b5b-5109-4da2-8735-e6c44c9acc33",
+    "name": "PrimeTrade Backend Assignment",
+    "description": "This collection contains REST APIs for authentication, role-based access,  \nand task CRUD operations.\n\nAll protected routes require:  \nAuthorization: Bearer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41678767"
+  },
+  "item": [
+    {
+      "name": "Admin Routes",
+      "item": [
+        {
+          "name": "Admin login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"sk123@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/auth/login",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Explicitly add a admin in database then then login as the user login"
+          },
+          "response": [
+            {
+              "name": "Admin login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{TOKEN}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"sk123@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/auth/login",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "291"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"123-INfkC1wY6D4jNkiZnLPCvNF+EA0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Feb 2026 17:59:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"6994908420a68e0ce516216f\",\n    \"name\": \"Suraj\",\n    \"email\": \"sk123@gmail.com\",\n    \"role\": \"admin\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTQ5MDg0MjBhNjhlMGNlNTE2MjE2ZiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MTM1MTE4NSwiZXhwIjoxNzcxNDM3NTg1fQ.qGYzaRfaByvAh361xi84na5_GpxJkBH6jI6a4NGoWF8\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Tasks (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/admin/tasks",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "admin",
+                "tasks"
+              ]
+            },
+            "description": "Returns all tasks in the system.\n\nAccessible only to users with role: admin.\n\nAuthentication:  \nAuthorization: Bearer\n\nResponse:  \n200 OK  \nReturns array of all task objects."
+          },
+          "response": [
+            {
+              "name": "Get All Tasks (Admin)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{TOKEN}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{BASE_URL}}/admin/tasks",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "tasks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "713"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2c9-ilb4Yuxz3WwYKl32dFM94ANCaFs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Feb 2026 18:03:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"tasks\": [\n        {\n            \"_id\": \"699492871c5515c4f6143874\",\n            \"title\": \"AI\",\n            \"description\": \"AI is danger\",\n            \"status\": \"pending\",\n            \"user\": \"6994908420a68e0ce516216f\",\n            \"createdAt\": \"2026-02-17T16:08:39.888Z\",\n            \"updatedAt\": \"2026-02-17T16:08:39.888Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699492bd1c5515c4f6143876\",\n            \"title\": \"web\",\n            \"description\": \"web is in danger\",\n            \"status\": \"pending\",\n            \"user\": \"6994908420a68e0ce516216f\",\n            \"createdAt\": \"2026-02-17T16:09:33.348Z\",\n            \"updatedAt\": \"2026-02-17T16:09:33.348Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6994a812a115ca273b9a8827\",\n            \"title\": \"Complete assignment 1\",\n            \"description\": \"Finish backend submission 1\",\n            \"status\": \"pending\",\n            \"user\": \"69949df7a115ca273b9a8820\",\n            \"createdAt\": \"2026-02-17T17:40:34.984Z\",\n            \"updatedAt\": \"2026-02-17T17:40:34.984Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Admin Update Task",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Updated Task Title\",\r\n  \"description\": \"Updated description\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/admin/tasks/{{TASK_ID}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "admin",
+                "tasks",
+                "{{TASK_ID}}"
+              ]
+            },
+            "description": "Allows admin to update any task in the system.\n\nAuthentication:  \nAuthorization: Bearer\n\nRequest Body:  \n{  \n\"title\": \"Updated title\",  \n\"description\": \"Updated description\"  \n}\n\nResponse:  \n200 OK  \nReturns updated task object."
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{TOKEN}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated Task Title\",\r\n  \"description\": \"Updated description\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/admin/tasks/{{TASK_ID}}",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "tasks",
+                    "{{TASK_ID}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "300"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"12c-A8kjKRXK8g+bQ/OZB/OXGp/MkP4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Feb 2026 18:07:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task updated successfully\",\n    \"task\": {\n        \"_id\": \"6994a812a115ca273b9a8827\",\n        \"title\": \"Updated Task Title\",\n        \"description\": \"Updated description\",\n        \"status\": \"pending\",\n        \"user\": \"69949df7a115ca273b9a8820\",\n        \"createdAt\": \"2026-02-17T17:40:34.984Z\",\n        \"updatedAt\": \"2026-02-17T18:07:18.043Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Admin Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/admin/tasks/{{TASK_ID}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "admin",
+                "tasks",
+                "{{TASK_ID}}"
+              ]
+            },
+            "description": "Allows admin to delete any task in the system.\n\nAuthentication:  \nAuthorization: Bearer\n\nResponse:  \n200 OK  \nReturns deleted task ID."
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{TOKEN}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{BASE_URL}}/admin/tasks/{{TASK_ID}}",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "tasks",
+                    "{{TASK_ID}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-cxC0VcFJvr6W/A930eKlOLmIaXE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Feb 2026 18:09:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task deleted successfully\",\n    \"id\": \"6994a812a115ca273b9a8827\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/auth/register",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        },
+        "description": "Registers a new user with hashed password and returns JWT token."
+      },
+      "response": [
+        {
+          "name": "Register User",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/auth/register",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "293"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"125-jp8ICVnXRHEeg54xyINxZxuwYJA\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 16:57:27 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"69949df7a115ca273b9a8820\",\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"role\": \"user\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTQ5ZGY3YTExNWNhMjczYjlhODgyMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcxMzQ3NDQ3LCJleHAiOjE3NzE0MzM4NDd9.OYVcYX4xlojwqkVukDSxqB94NAiEaD0Pw0l0_hQNdww\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();\r",
+              "\r",
+              "if (response.token) {\r",
+              "    pm.environment.set(\"TOKEN\", response.token);\r",
+              "}\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/auth/login",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        },
+        "description": "StartFragmentAuthenticate an existing user using their email and password and return a JSON Web Token (JWT) plus basic user details.EndFragment"
+      },
+      "response": [
+        {
+          "name": "Login User",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"12345678\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/auth/login",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "293"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"125-dneZQosoynKwdykE18b6ZUysyMI\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:17:44 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"69949df7a115ca273b9a8820\",\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"role\": \"user\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTQ5ZGY3YTExNWNhMjczYjlhODgyMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcxMzQ4NjY0LCJleHAiOjE3NzE0MzUwNjR9.NvwGQVELQd1Ph0MhsaDObmD4Hk4oRHIlqHHasBoMrAA\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete assignment\",\r\n  \"description\": \"Finish backend submission\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user"
+          ]
+        },
+        "description": "Creates a new task for the authenticated user.\n\nAuthentication:  \nRequires JWT token in Authorization header.\n\nHeader:  \nAuthorization: Bearer\n\nRequest Body:  \n{  \n\"title\": \"Task title\",  \n\"description\": \"Optional description\"  \n}\n\nResponse:  \n201 Created  \nReturns the newly created task object."
+      },
+      "response": [
+        {
+          "name": "Create Task",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete assignment\",\r\n  \"description\": \"Finish backend submission\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "user"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "307"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"133-HWnuS0DWz0IlP2Oh/RORAefV2T8\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:32:37 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task created successfully\",\n    \"task\": {\n        \"title\": \"Complete assignment\",\n        \"description\": \"Finish backend submission\",\n        \"status\": \"pending\",\n        \"user\": \"69949df7a115ca273b9a8820\",\n        \"_id\": \"6994a635a115ca273b9a8824\",\n        \"createdAt\": \"2026-02-17T17:32:37.847Z\",\n        \"updatedAt\": \"2026-02-17T17:32:37.847Z\",\n        \"__v\": 0\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get My Tasks",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete assignment\",\r\n  \"description\": \"Finish backend submission\"\r\n}\r\n\r\n"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user"
+          ]
+        },
+        "description": "Retrieves all tasks belonging to the authenticated user.\n\nIf the logged-in user is an admin,  \nall tasks in the system are returned.\n\nAuthentication:  \nAuthorization: Bearer\n\nResponse:  \n200 OK  \nReturns an array of task objects."
+      },
+      "response": [
+        {
+          "name": "Get My Tasks",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete assignment\",\r\n  \"description\": \"Finish backend submission\"\r\n}\r\n\r\n"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "user"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "272"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"110-yY9F/VSiQC7iC4Z0zNtTzTUOMgI\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:38:23 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"tasks\": [\n        {\n            \"_id\": \"6994a635a115ca273b9a8824\",\n            \"title\": \"Complete assignment\",\n            \"description\": \"Finish backend submission\",\n            \"status\": \"pending\",\n            \"user\": \"69949df7a115ca273b9a8820\",\n            \"createdAt\": \"2026-02-17T17:32:37.847Z\",\n            \"updatedAt\": \"2026-02-17T17:32:37.847Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+        },
+        {
+          "name": "Get My Tasks",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete assignment\",\r\n  \"description\": \"Finish backend submission\"\r\n}\r\n\r\n"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "user"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "522"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"20a-VDDdJx6eMeVALYNz39ttUdkwlLk\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:40:51 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"tasks\": [\n        {\n            \"_id\": \"6994a635a115ca273b9a8824\",\n            \"title\": \"Complete assignment\",\n            \"description\": \"Finish backend submission\",\n            \"status\": \"pending\",\n            \"user\": \"69949df7a115ca273b9a8820\",\n            \"createdAt\": \"2026-02-17T17:32:37.847Z\",\n            \"updatedAt\": \"2026-02-17T17:32:37.847Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6994a812a115ca273b9a8827\",\n            \"title\": \"Complete assignment 1\",\n            \"description\": \"Finish backend submission 1\",\n            \"status\": \"pending\",\n            \"user\": \"69949df7a115ca273b9a8820\",\n            \"createdAt\": \"2026-02-17T17:40:34.984Z\",\n            \"updatedAt\": \"2026-02-17T17:40:34.984Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Updated Task Title\",\r\n  \"description\": \"Updated description\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user/{{Task}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user",
+            "{{Task}}"
+          ]
+        },
+        "description": "Updates a specific task.\n\nUser can update only their own task.  \nAdmin can update any task.\n\nAuthentication:  \nAuthorization: Bearer\n\nRequest Body:  \n{  \n\"title\": \"Updated title\",  \n\"description\": \"Updated description\"  \n}\n\nResponse:  \n200 OK  \nReturns the updated task."
+      },
+      "response": [
+        {
+          "name": "Update Task",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Updated Task Title\",\r\n  \"description\": \"Updated description\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user/{{Task}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "user",
+                "{{Task}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "300"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"12c-Jf8QCOPSfgkGA+Zw/ZJZifCw4PQ\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:42:12 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task updated successfully\",\n    \"task\": {\n        \"_id\": \"6994a635a115ca273b9a8824\",\n        \"title\": \"Updated Task Title\",\n        \"description\": \"Updated description\",\n        \"status\": \"pending\",\n        \"user\": \"69949df7a115ca273b9a8820\",\n        \"createdAt\": \"2026-02-17T17:32:37.847Z\",\n        \"updatedAt\": \"2026-02-17T17:42:12.741Z\",\n        \"__v\": 0\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/user/{{Task}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user",
+            "{{Task}}"
+          ]
+        },
+        "description": "Deletes a specific task.\n\nUser can delete only their own task.  \nAdmin can delete any task.\n\nAuthentication:  \nAuthorization: Bearer\n\nResponse:  \n200 OK  \nReturns deleted task ID."
+      },
+      "response": [
+        {
+          "name": "Delete Task",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/user/{{Task}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "user",
+                "{{Task}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Resource-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Origin-Agent-Cluster",
+              "value": "?1"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-DNS-Prefetch-Control",
+              "value": "off"
+            },
+            {
+              "key": "X-Download-Options",
+              "value": "noopen"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "86"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"56-uG6ZO47WXN78rPE1o1PyZl4WPxY\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 17 Feb 2026 17:44:50 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task deleted successfully\",\n    \"id\": \"6994a635a115ca273b9a8824\"\n}"
+        }
+      ]
+    }
+  ]
+}
