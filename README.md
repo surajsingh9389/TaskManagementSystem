@@ -99,6 +99,28 @@ A basic React frontend is included to demonstrate API interaction and protected 
 
 ---
 
+## Installation & Setup
+
+###  Clone Repository
+
+- git clone <your-repository-link>
+
+#### Backend Setup
+- cd Backend
+- npm install
+- Create a .env file in root:
+   PORT=5000
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_secret_key
+- npm run dev 
+
+#### Frontend Setup
+- cd frontend
+- npm install
+- npm run dev
+
+---
+
 ## Features Implemented
 
 ### Authentication
@@ -141,41 +163,24 @@ A basic React frontend is included to demonstrate API interaction and protected 
 ## Project Structure
 
 ```text
-root/
+.
 ├── backend/
-│   ├── controllers/      # Route controllers (logic)
-│   ├── middleware/       # Custom auth & error middlewares
-│   ├── models/           # Mongoose schemas (User, Task, etc.)
-│   ├── routes/           # API route definitions
+│   ├── controllers/      # Route logic
+│   ├── middleware/       # Custom auth & error handling
+│   ├── models/           # Mongoose/Database schemas
+│   ├── routes/           # API endpoints
 │   ├── utils/            # Helper functions
-│   ├── validators/       # Request validation logic
-│   ├── docs/             # API Documentation
-│   │   └── PrimeTrade_Backend_Assignment.postman_collection.json
-│   └── app.js            # Entry point (Express config)
+│   ├── validators/       # Input validation
+│   └── app.js            # Server entry point
 │
-└── frontend/
-    ├── pages/            # View components (Login, Dashboard)
-    ├── services/         # API call abstractions (Axios/Fetch)
-    └── App.jsx           # Main React component
-```text
-
-## Installation & Setup
-
-###  Clone Repository
-
-- git clone <your-repository-link>
-- cd Backend
-- npm install
-- Create a .env file in root:
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_secret_key
-- npm run dev 
-
-- cd frontend
-- npm install
-- npm run dev
-
+├── frontend/
+│   ├── pages/            # UI Views
+│   ├── services/         # API service layers
+│   └── App.jsx           # Main React component
+│
+└── docs/                 # Documentation & API Collections
+    └── PrimeTrade_Backend_Assignment.postman_collection.json
+```
 ---
 
 ## API Endpoints (v1)
