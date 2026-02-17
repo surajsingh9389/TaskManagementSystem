@@ -157,6 +157,7 @@ root/
     ├── pages/            # View components (Login, Dashboard)
     ├── services/         # API call abstractions (Axios/Fetch)
     └── App.jsx           # Main React component
+```text
 
 ## Installation & Setup
 
