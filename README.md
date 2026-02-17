@@ -68,9 +68,9 @@ A basic React frontend is included to demonstrate API interaction and protected 
 
 ## Project Structure
 
-# 🚀 PrimeTrade Backend Developer Assignment
+# PrimeTrade Backend Developer Assignment
 
-## 📌 Overview
+## Overview
 
 This project is a scalable REST API with authentication and role-based access control, built using Node.js, Express, and MongoDB.
 
@@ -80,9 +80,9 @@ A basic React frontend is included to demonstrate API interaction and protected 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
-### 🔹 Backend
+### Backend
 - Node.js
 - Express.js
 - MongoDB (Mongoose)
@@ -92,32 +92,32 @@ A basic React frontend is included to demonstrate API interaction and protected 
 - Centralized Error Handling Middleware
 - Postman (API documentation)
 
-### 🔹 Frontend
+### Frontend
 - React (Vite)
 - Axios
 - React Router DOM
 
 ---
 
-## ✨ Features Implemented
+## Features Implemented
 
-### ✅ Authentication
+### Authentication
 - User Registration with hashed password
 - Secure Login with JWT generation
 - Token-based authentication middleware
 - JWT auto-attachment in frontend requests
 
-### ✅ Role-Based Access Control
+### Role-Based Access Control
 - User role → Can manage only their own tasks
 - Admin role → Can view, update, and delete all tasks
 
-### ✅ CRUD Operations (Tasks)
+### CRUD Operations (Tasks)
 - Create Task
 - Get Tasks (User: own tasks, Admin: all tasks)
 - Update Task
 - Delete Task
 
-### ✅ Backend Best Practices
+### Backend Best Practices
 - API Versioning (`/api/v1`)
 - Centralized error handling
 - Input validation middleware
@@ -125,12 +125,12 @@ A basic React frontend is included to demonstrate API interaction and protected 
 - Secure JWT handling
 - Environment variable configuration
 
-### ✅ API Documentation
+### API Documentation
 - Postman collection included in `/docs`
 - Environment variables supported
 - JWT auto-save in Postman
 
-### ✅ Frontend Integration
+### Frontend Integration
 - Register & Login UI
 - Protected Dashboard
 - Task CRUD UI
@@ -138,28 +138,25 @@ A basic React frontend is included to demonstrate API interaction and protected 
 
 ---
 
-## 🏗 Project Structure
+## Project Structure
 
-backend/
+```text
+root/
+├── backend/
+│   ├── controllers/      # Route controllers (logic)
+│   ├── middleware/       # Custom auth & error middlewares
+│   ├── models/           # Mongoose schemas (User, Task, etc.)
+│   ├── routes/           # API route definitions
+│   ├── utils/            # Helper functions
+│   ├── validators/       # Request validation logic
+│   ├── docs/             # API Documentation
+│   │   └── PrimeTrade_Backend_Assignment.postman_collection.json
+│   └── app.js            # Entry point (Express config)
 │
-├── controllers/
-├── middleware/
-├── models/
-├── routes/
-├── utils/
-├── validators/
-├── docs/
-│ └── PrimeTrade_Backend_Assignment.postman_collection.json
-└── app.js
-
-frontend/
-├── pages/
-├── services/
-└── App.jsx
-
-
-
----
+└── frontend/
+    ├── pages/            # View components (Login, Dashboard)
+    ├── services/         # API call abstractions (Axios/Fetch)
+    └── App.jsx           # Main React component
 
 ## Installation & Setup
 
