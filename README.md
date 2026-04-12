@@ -31,14 +31,14 @@ A basic React frontend is included to demonstrate API interaction and protected 
 
 ###  Clone Repository
 
-- git clone <your-repository-link>
+- git clone https://github.com/surajsingh9389/TaskManagementSystemWithRBAC.git
 
 #### Backend Setup
 - cd Backend
 - npm install
 - Create a .env file in root:
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
+   PORT=5000, 
+   MONGO_URI=your_mongodb_connection_string, 
    JWT_SECRET=your_secret_key
 - npm run dev 
 
